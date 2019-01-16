@@ -16,9 +16,12 @@
   :test-paths ["src/test/clojure"]
   :resource-paths ["src/main/resources"]
   :target-path "target/%s"
-
-  :profiles {:uberjar {:aot :all :jar-name "etude-gen-class.jar" :uberjar-name "etude-gen-class-uberjar.jar"}
-             :main-app {
-                        :aot [pl.tomaszgigiel.etude-gen-class.MyBigInteger]
-                        :main ^:skip-aot pl.tomaszgigiel.etude-gen-class.core}}
-  :aliases {"run-main-app" ["with-profile" "main-app" "run"]})
+  :jar-name "etude-gen-class.jar"
+  :uberjar-name "etude-gen-class-uberjar.jar"
+  :main ^:skip-aot pl.tomaszgigiel.etude-gen-class.core
+  ;; MyBigInteger is compiled twice, but:
+  ;; I do not want to maintain:
+  ;; :aot [pl.tomaszgigiel.etude-gen-class.MyBigInteger #"^(?:(?!pl.tomaszgigiel.etude-gen-class.MyBigInteger$).)*$"]
+  ;; this is not a big problem for me
+  :aot [pl.tomaszgigiel.etude-gen-class.MyBigInteger #".*"]
+)
