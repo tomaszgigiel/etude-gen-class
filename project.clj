@@ -18,7 +18,7 @@
   :target-path "target/%s"
   :jar-name "etude-gen-class.jar"
   :uberjar-name "etude-gen-class-uberjar.jar"
-  :main ^:skip-aot pl.tomaszgigiel.etude-gen-class.core
+  :main pl.tomaszgigiel.etude-gen-class.core
   ;; MyBigInteger is compiled twice, but:
   ;; I do not want to maintain:
   ;; :aot [pl.tomaszgigiel.etude-gen-class.MyBigInteger #"^(?:(?!pl.tomaszgigiel.etude-gen-class.MyBigInteger$).)*$"]
